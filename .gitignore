@@ -1,0 +1,22 @@
+﻿# Java build output
+target/
+*.class
+*.war
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+mysql-init.txt
+*.pem
+*.key
+
+# Logs and temporary files
+*.log
+logs/
+temp/

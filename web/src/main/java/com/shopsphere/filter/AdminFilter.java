@@ -1,0 +1,3 @@
+package com.shopsphere.filter;
+import com.shopsphere.model.User; import jakarta.servlet.*; import jakarta.servlet.http.*; import jakarta.servlet.annotation.*; import java.io.IOException;
+@WebFilter("/admin/*") public class AdminFilter implements Filter {public void doFilter(ServletRequest rq,ServletResponse rs,FilterChain chain)throws IOException,ServletException{HttpServletRequest q=(HttpServletRequest)rq;HttpServletResponse p=(HttpServletResponse)rs;HttpSession s=q.getSession(false);User u=s==null?null:(User)s.getAttribute("user");if(u==null){p.sendRedirect(q.getContextPath()+"/login");return;}if(!"ADMIN".equals(u.getRole())){p.sendError(403,"Administrator access required.");return;}chain.doFilter(rq,rs);}}

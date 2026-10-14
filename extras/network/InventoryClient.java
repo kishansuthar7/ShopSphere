@@ -1,0 +1,2 @@
+import java.io.*;import java.net.*;
+public class InventoryClient {public static void main(String[] args)throws IOException{try(Socket s=new Socket("localhost",5050);PrintWriter out=new PrintWriter(s.getOutputStream(),true);BufferedReader in=new BufferedReader(new InputStreamReader(s.getInputStream()))){out.println(args.length==0?"GET_STOCK 1":String.join(" ",args));System.out.println(in.readLine());}}}

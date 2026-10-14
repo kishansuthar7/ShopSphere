@@ -1,0 +1,2 @@
+import java.net.*;import java.io.*;
+public class UrlConnectionDemo {public static void main(String[] args)throws Exception{URL url=new URL(args.length==0?"https://example.com":args[0]);URLConnection c=url.openConnection();c.setConnectTimeout(5000);c.setReadTimeout(5000);System.out.println("Content type: "+c.getContentType());try(BufferedReader r=new BufferedReader(new InputStreamReader(c.getInputStream()))){for(int i=0;i<10;i++){String line=r.readLine();if(line==null)break;System.out.println(line);}}}}

@@ -1,0 +1,3 @@
+package com.shopsphere.controller;
+import com.shopsphere.dao.ProductDAO; import jakarta.servlet.*; import jakarta.servlet.http.*; import jakarta.servlet.annotation.*; import java.io.IOException;
+@WebServlet({"/","/products"}) public class HomeServlet extends HttpServlet {protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,IOException {try{req.setAttribute("products",new ProductDAO().findAll(req.getParameter("q")));req.setAttribute("query",req.getParameter("q")==null?"":req.getParameter("q"));req.getRequestDispatcher("/WEB-INF/views/products.jsp").forward(req,resp);}catch(Exception e){throw new ServletException("Could not load products",e);}}}
